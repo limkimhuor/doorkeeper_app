@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASS"] %>
+
+development:
+  <<: *default
+  database: doorkeeper_app_development
+
+test:
+  <<: *default
+  database: doorkeeper_app_test
+
+production:
+  <<: *default
+  database: doorkeeper_app_production
+  username: doorkeeper_app
+  password: <%= ENV['DOORKEEPER_APP_DATABASE_PASSWORD'] %>
